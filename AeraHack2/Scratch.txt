@@ -1,0 +1,13 @@
+﻿https://login.microsoftonline.com/45dfe5de-afce-4307-b2c0-5d2d6a7318cc/oauth2/token
+
+Post-body (form-edit bulk-edit)
+grant_type:client_credentials
+client_id:03e7b279-4160-408e-adb4-d2672683552d
+client_secret:YACe0cQa5m6O4rinlaarUWcsDBjs6r/kruOAOEjZsrw=
+resource:https://scasmflophotmail.onmicrosoft.com/AeraHack2
+
+
+http://localhost/AeraHack2/api/values/3
+
+Get-header
+key:Authorization value:Bearer <token>
