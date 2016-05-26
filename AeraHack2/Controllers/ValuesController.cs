@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 
 namespace AeraHack2.Controllers
@@ -13,7 +14,14 @@ namespace AeraHack2.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2", "value3" };
+            var cp = ClaimsPrincipal.Current;
+            List<string> claims = new List<string>();
+            foreach (var c in cp.Claims)
+            {
+                claims.Add(string.Format("{0} - {1}", c.Subject, c.Value));
+            }
+            //return new string[] { "value1", "value2", "value3" };
+            return claims.ToArray<string>();
         }
 
         // GET api/values/5

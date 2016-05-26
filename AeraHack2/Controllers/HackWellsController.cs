@@ -10,31 +10,33 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AeraHack2.Models;
+using HackApp.Contracts;
 
 namespace AeraHack2.Controllers
 {
+    [Authorize]
     public class HackWellsController : ApiController
     {
         private AeraLegoEntities1 db = new AeraLegoEntities1();
 
         // GET: api/HackWells
-        public IQueryable<HackWell> GetHackWells()
+        public IQueryable<Completion> GetHackWells()
         {
-            return db.HackWells;
+            return db.HackWells.Select(hw => new Completion { CompletionId = hw.cmpl_fac_id, CompletionName = hw.cmpl_fac_nme });
         }
 
         // GET: api/HackWells/5
-        [ResponseType(typeof(HackWell))]
-        public async Task<IHttpActionResult> GetHackWell(decimal id)
-        {
-            HackWell hackWell = await db.HackWells.FindAsync(id);
-            if (hackWell == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(Completion))]
+        //public async Task<IHttpActionResult> GetHackWell(decimal id)
+        //{
+        //    Completion hackWell = (await db.HackWells.FindAsync(id));
+        //    if (hackWell == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(hackWell);
-        }
+        //    return Ok(hackWell);
+        //}
 
         // PUT: api/HackWells/5
         [ResponseType(typeof(void))]

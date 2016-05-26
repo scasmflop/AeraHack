@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace AeraHack2
+namespace HackApp
 {
     public class RouteConfig
     {
@@ -17,7 +17,7 @@ namespace AeraHack2
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-                //namespaces: new[] { "AeraHack2.Controllers" }
+                //namespaces: new[] { "HackApp.Controllers" }
             );
         }
     }
