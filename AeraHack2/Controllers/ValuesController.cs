@@ -23,7 +23,7 @@ namespace AeraHack2.Controllers
             switch (id)
             {
                 case 1:
-                    result = "Nice going";
+                    result = "Nice going!";
                     break;
                 case 2:
                     result = "Hey now";
