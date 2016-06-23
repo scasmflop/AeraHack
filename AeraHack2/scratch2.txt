@@ -1,0 +1,18 @@
+aerauser1:H@ckuser
+
+CrewContinuity App Id:
+b17ab137-c543-45d6-9efb-46f5628d0968
+Secret:
+f3lEk1peuvLYgBWLB3OnYF3ftQVC8jpH9w257dWAh2I=
+
+
+https://login.microsoftonline.com/45dfe5de-afce-4307-b2c0-5d2d6a7318cc/oauth2/authorize
+45dfe5de-afce-4307-b2c0-5d2d6a7318cc
+
+
+https://login.microsoftonline.com/45dfe5de-afce-4307-b2c0-5d2d6a7318cc/oauth2/authorize
+https://login.microsoftonline.com/45dfe5de-afce-4307-b2c0-5d2d6a7318cc/wsfed
+
+ca99673e-447d-400f-b710-53bd658d38f2
+
+aerasql@vdrlex56wl;Password=Aera@123
