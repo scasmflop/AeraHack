@@ -25,3 +25,8 @@ H@ckuser
 
 Proxy
 https://aerahackproxy.azurewebsites.net/AeraHack2/api/hackwells 
+
+
+Swagger
+client_id:1572537c-58d0-4d33-81d9-02ea48b51352
+secret:w4tfmvYCExd+srfvWHxmWwOkpLsU97+ZUGEm0q9GiOI=
