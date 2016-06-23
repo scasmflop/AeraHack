@@ -11,3 +11,17 @@ http://localhost/AeraHack2/api/values/3
 
 Get-header
 key:Authorization value:Bearer <token>
+
+
+
+hackapp
+clientid: c3647486-a336-460c-9cda-9ad2f5713c4b
+secret: glsSqQQrKlnq8FB8h5OAsH5KRJwmm4o5rTNPGHdARm0=
+tenant: 45dfe5de-afce-4307-b2c0-5d2d6a7318cc
+
+User
+aerauser1
+H@ckuser
+
+Proxy
+https://aerahackproxy.azurewebsites.net/AeraHack2/api/hackwells 
