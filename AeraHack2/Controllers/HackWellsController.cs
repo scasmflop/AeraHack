@@ -22,21 +22,48 @@ namespace AeraHack2.Controllers
         // GET: api/HackWells
         public IQueryable<Completion> GetHackWells()
         {
-            return db.HackWells.Select(hw => new Completion { CompletionId = hw.cmpl_fac_id, CompletionName = hw.cmpl_fac_nme });
+            return db.HackWells.Select(hackWell => new Completion
+            {
+                CompletionId = hackWell.cmpl_fac_id,
+                CompletionName = hackWell.cmpl_fac_nme,
+                APINumber = hackWell.well_api_nbr,
+                State = hackWell.fac_state_type_desc,
+                Status = hackWell.svc_stat_indc,
+                Material = hackWell.prim_prdt_matl_type_desc,
+                PrimaryPurpose = hackWell.prim_purp_type_desc,
+                Manifold = hackWell.PROD_MFLD_FAC_NME
+            }).Take(50);
         }
 
-        // GET: api/HackWells/5
-        //[ResponseType(typeof(Completion))]
-        //public async Task<IHttpActionResult> GetHackWell(decimal id)
+        // GET: api/HackWells/3
+        //public IQueryable<Completion> GetHackWells(int id)
         //{
-        //    Completion hackWell = (await db.HackWells.FindAsync(id));
-        //    if (hackWell == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(hackWell);
+        //    return db.HackWells.Select(hw => new Completion { CompletionId = hw.cmpl_fac_id, CompletionName = hw.cmpl_fac_nme }).Where(c => c.CompletionId == id);
         //}
+
+        // GET: api/HackWells/5
+        [ResponseType(typeof(Completion))]
+        public async Task<IHttpActionResult> GetHackWells(decimal id)
+        {
+            var hackWell = await db.HackWells.FindAsync(id);
+
+            if (hackWell == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new Completion
+            {
+                CompletionId = hackWell.cmpl_fac_id,
+                CompletionName = hackWell.cmpl_fac_nme,
+                APINumber = hackWell.well_api_nbr,
+                State = hackWell.fac_state_type_desc,
+                Status = hackWell.svc_stat_indc,
+                Material = hackWell.prim_prdt_matl_type_desc,
+                PrimaryPurpose = hackWell.prim_purp_type_desc,
+                Manifold = hackWell.PROD_MFLD_FAC_NME
+            });
+        }
 
         // PUT: api/HackWells/5
         [ResponseType(typeof(void))]

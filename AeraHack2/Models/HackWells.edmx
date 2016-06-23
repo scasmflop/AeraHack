@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AeraLegoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AeraLegoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HackWells">
@@ -13,17 +13,28 @@ warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary ke
           </Key>
           <Property Name="cmpl_fac_id" Type="numeric" Precision="9" Scale="0" Nullable="false" />
           <Property Name="cmpl_fac_nme" Type="varchar" MaxLength="30" />
+          <Property Name="well_api_nbr" Type="varchar" MaxLength="10" />
+          <Property Name="fac_state_type_desc" Type="varchar" MaxLength="50" />
+          <Property Name="prim_purp_type_desc" Type="varchar" MaxLength="50" />
+          <Property Name="prim_prdt_matl_type_desc" Type="varchar" MaxLength="50" />
+          <Property Name="svc_stat_indc" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="PROD_MFLD_FAC_NME" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityContainer Name="AeraLegoModelStoreContainer">
           <EntitySet Name="HackWells" EntityType="Self.HackWells" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [HackWells].[cmpl_fac_id] AS [cmpl_fac_id], 
-    [HackWells].[cmpl_fac_nme] AS [cmpl_fac_nme]
+    [HackWells].[cmpl_fac_nme] AS [cmpl_fac_nme], 
+    [HackWells].[well_api_nbr] AS [well_api_nbr], 
+    [HackWells].[fac_state_type_desc] AS [fac_state_type_desc], 
+    [HackWells].[prim_purp_type_desc] AS [prim_purp_type_desc], 
+    [HackWells].[prim_prdt_matl_type_desc] AS [prim_prdt_matl_type_desc], 
+    [HackWells].[svc_stat_indc] AS [svc_stat_indc], 
+    [HackWells].[PROD_MFLD_FAC_NME] AS [PROD_MFLD_FAC_NME]
     FROM [dbo].[HackWells] AS [HackWells]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AeraLegoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -33,6 +44,12 @@ warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary ke
           </Key>
           <Property Name="cmpl_fac_id" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
           <Property Name="cmpl_fac_nme" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="well_api_nbr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fac_state_type_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prim_purp_type_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prim_prdt_matl_type_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="svc_stat_indc" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="PROD_MFLD_FAC_NME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="AeraLegoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="HackWells" EntityType="Self.HackWell" />
@@ -46,6 +63,12 @@ warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary ke
           <EntitySetMapping Name="HackWells">
             <EntityTypeMapping TypeName="AeraLegoModel.HackWell">
               <MappingFragment StoreEntitySet="HackWells">
+                <ScalarProperty Name="PROD_MFLD_FAC_NME" ColumnName="PROD_MFLD_FAC_NME" />
+                <ScalarProperty Name="svc_stat_indc" ColumnName="svc_stat_indc" />
+                <ScalarProperty Name="prim_prdt_matl_type_desc" ColumnName="prim_prdt_matl_type_desc" />
+                <ScalarProperty Name="prim_purp_type_desc" ColumnName="prim_purp_type_desc" />
+                <ScalarProperty Name="fac_state_type_desc" ColumnName="fac_state_type_desc" />
+                <ScalarProperty Name="well_api_nbr" ColumnName="well_api_nbr" />
                 <ScalarProperty Name="cmpl_fac_id" ColumnName="cmpl_fac_id" />
                 <ScalarProperty Name="cmpl_fac_nme" ColumnName="cmpl_fac_nme" />
               </MappingFragment>

@@ -16,5 +16,11 @@ namespace AeraHack2.Models
     {
         public decimal cmpl_fac_id { get; set; }
         public string cmpl_fac_nme { get; set; }
+        public string well_api_nbr { get; set; }
+        public string fac_state_type_desc { get; set; }
+        public string prim_purp_type_desc { get; set; }
+        public string prim_prdt_matl_type_desc { get; set; }
+        public string svc_stat_indc { get; set; }
+        public string PROD_MFLD_FAC_NME { get; set; }
     }
 }

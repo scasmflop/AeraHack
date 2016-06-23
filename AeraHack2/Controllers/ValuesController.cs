@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace AeraHack2.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
