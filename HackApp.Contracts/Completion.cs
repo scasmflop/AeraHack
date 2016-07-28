@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HackApp.Contracts
 {
-    public class Completion
+    public class Well
     {
-        public decimal CompletionId { get; set; }
-        public string  CompletionName { get; set; }
+        public decimal WellId { get; set; }
+        public string  WellName { get; set; }
         public string APINumber { get; set; }        
         public string State { get; set; }
         public string PrimaryPurpose { get; set; }

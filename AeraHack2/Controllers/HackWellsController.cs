@@ -20,12 +20,12 @@ namespace AeraHack2.Controllers
         private AeraLegoEntities1 db = new AeraLegoEntities1();
 
         // GET: api/HackWells
-        public IQueryable<Completion> GetHackWells()
+        public IQueryable<Well> GetHackWells()
         {
-            return db.HackWells.Select(hackWell => new Completion
+            return db.HackWells.Select(hackWell => new Well
             {
-                CompletionId = hackWell.cmpl_fac_id,
-                CompletionName = hackWell.cmpl_fac_nme,
+                WellId = hackWell.well_fac_id,
+                WellName = hackWell.well_fac_nme,
                 APINumber = hackWell.well_api_nbr,
                 State = hackWell.fac_state_type_desc,
                 Status = hackWell.svc_stat_indc,
@@ -42,7 +42,7 @@ namespace AeraHack2.Controllers
         //}
 
         // GET: api/HackWells/5
-        [ResponseType(typeof(Completion))]
+        [ResponseType(typeof(Well))]
         public async Task<IHttpActionResult> GetHackWells(decimal id)
         {
             var hackWell = await db.HackWells.FindAsync(id);
@@ -52,10 +52,10 @@ namespace AeraHack2.Controllers
                 return NotFound();
             }
 
-            return Ok(new Completion
+            return Ok(new Well
             {
-                CompletionId = hackWell.cmpl_fac_id,
-                CompletionName = hackWell.cmpl_fac_nme,
+                WellId = hackWell.well_fac_id,
+                WellName = hackWell.well_fac_nme,
                 APINumber = hackWell.well_api_nbr,
                 State = hackWell.fac_state_type_desc,
                 Status = hackWell.svc_stat_indc,
@@ -74,7 +74,7 @@ namespace AeraHack2.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != hackWell.cmpl_fac_id)
+            if (id != hackWell.well_fac_id)
             {
                 return BadRequest();
             }
@@ -117,7 +117,7 @@ namespace AeraHack2.Controllers
             }
             catch (DbUpdateException)
             {
-                if (HackWellExists(hackWell.cmpl_fac_id))
+                if (HackWellExists(hackWell.well_fac_id))
                 {
                     return Conflict();
                 }
@@ -127,7 +127,7 @@ namespace AeraHack2.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = hackWell.cmpl_fac_id }, hackWell);
+            return CreatedAtRoute("DefaultApi", new { id = hackWell.well_fac_id }, hackWell);
         }
 
         // DELETE: api/HackWells/5
@@ -157,7 +157,7 @@ namespace AeraHack2.Controllers
 
         private bool HackWellExists(decimal id)
         {
-            return db.HackWells.Count(e => e.cmpl_fac_id == id) > 0;
+            return db.HackWells.Count(e => e.well_fac_id == id) > 0;
         }
     }
 }

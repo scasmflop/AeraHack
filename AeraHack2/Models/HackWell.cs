@@ -14,8 +14,8 @@ namespace AeraHack2.Models
     
     public partial class HackWell
     {
-        public decimal cmpl_fac_id { get; set; }
-        public string cmpl_fac_nme { get; set; }
+        public int well_fac_id { get; set; }
+        public string well_fac_nme { get; set; }
         public string well_api_nbr { get; set; }
         public string fac_state_type_desc { get; set; }
         public string prim_purp_type_desc { get; set; }
