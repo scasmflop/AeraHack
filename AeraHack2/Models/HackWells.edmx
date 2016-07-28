@@ -9,10 +9,11 @@
 warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HackWells">
           <Key>
-            <PropertyRef Name="cmpl_fac_id" />
+            <PropertyRef Name="well_fac_id" />
+            
           </Key>
-          <Property Name="cmpl_fac_id" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="cmpl_fac_nme" Type="varchar" MaxLength="30" />
+          <Property Name="well_fac_id" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="well_fac_nme" Type="varchar" MaxLength="30" />
           <Property Name="well_api_nbr" Type="varchar" MaxLength="10" />
           <Property Name="fac_state_type_desc" Type="varchar" MaxLength="50" />
           <Property Name="prim_purp_type_desc" Type="varchar" MaxLength="50" />
@@ -20,11 +21,165 @@ warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary ke
           <Property Name="svc_stat_indc" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="PROD_MFLD_FAC_NME" Type="varchar" MaxLength="30" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AeraLego.dbo.v_PumpingUnitInspections' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_PumpingUnitInspections">
+          <Key>
+            <PropertyRef Name="WellFacID" />
+            <PropertyRef Name="InspectionDate" />
+          </Key>
+          <Property Name="Asset" Type="varchar" MaxLength="35" />
+          <Property Name="WellFacID" Type="int" Nullable="false" />
+          <Property Name="WellName" Type="varchar" MaxLength="35" />
+          <Property Name="InspectionDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="InspectorName" Type="varchar" MaxLength="100" />
+          <Property Name="UnitMatchSAP" Type="varchar" MaxLength="10" />
+          <Property Name="UnitSAPNo" Type="varchar" MaxLength="50" />
+          <Property Name="UnitMfr" Type="varchar" MaxLength="50" />
+          <Property Name="UnitSN" Type="varchar" MaxLength="50" />
+          <Property Name="UnitAPI" Type="varchar" MaxLength="50" />
+          <Property Name="UnitStyle" Type="varchar" MaxLength="20" />
+          <Property Name="MotorMatchSAP" Type="varchar" MaxLength="10" />
+          <Property Name="MotorSAPNo" Type="varchar" MaxLength="50" />
+          <Property Name="MotorMfr" Type="varchar" MaxLength="50" />
+          <Property Name="MotorSN" Type="varchar" MaxLength="50" />
+          <Property Name="MotorHP" Type="varchar" MaxLength="20" />
+          <Property Name="MotorFrame" Type="varchar" MaxLength="20" />
+          <Property Name="MotorRPM" Type="varchar" MaxLength="20" />
+          <Property Name="MotorSheaveSize" Type="varchar" MaxLength="20" />
+          <Property Name="MotorNumberBelts" Type="varchar" MaxLength="20" />
+          <Property Name="MotorBeltSize" Type="varchar" MaxLength="20" />
+          <Property Name="GearboxSAPNumber" Type="varchar" MaxLength="50" />
+          <Property Name="GearboxSerialNumber" Type="varchar" MaxLength="50" />
+          <Property Name="GearboxSheaveSize" Type="varchar" MaxLength="20" />
+          <Property Name="GearboxRatio" Type="varchar" MaxLength="20" />
+          <Property Name="CBRotation" Type="varchar" MaxLength="20" />
+          <Property Name="CBCranks" Type="varchar" MaxLength="50" />
+          <Property Name="CBLeftMainLead" Type="varchar" MaxLength="42" />
+          <Property Name="CBLeftAux1Lead" Type="varchar" MaxLength="20" />
+          <Property Name="CBLeftAux2Lead" Type="varchar" MaxLength="20" />
+          <Property Name="CBLeftMainLag" Type="varchar" MaxLength="42" />
+          <Property Name="CBLeftAux1Lag" Type="varchar" MaxLength="20" />
+          <Property Name="CBLeftAux2Lag" Type="varchar" MaxLength="20" />
+          <Property Name="CBRightAux1Lead" Type="varchar" MaxLength="20" />
+          <Property Name="CBRightAux2Lead" Type="varchar" MaxLength="20" />
+          <Property Name="CBRightMainLag" Type="varchar" MaxLength="42" />
+          <Property Name="CBRightAux1Lag" Type="varchar" MaxLength="20" />
+          <Property Name="CBRightAux2Lag" Type="varchar" MaxLength="20" />
+          <Property Name="GearboxGearsCondition" Type="varchar" MaxLength="20" />
+          <Property Name="GearboxGearsComment" Type="varchar" MaxLength="255" />
+          <Property Name="GearboxGearsReplacedIndicator" Type="int" />
+          <Property Name="GearboxGearsSealLeakIndicator" Type="int" />
+          <Property Name="GearboxLeakingIndicator" Type="varchar" MaxLength="20" />
+          <Property Name="CranksCondition" Type="varchar" MaxLength="20" />
+          <Property Name="CranksComment" Type="varchar" MaxLength="255" />
+          <Property Name="CranksReplacedIndicator" Type="int" />
+          <Property Name="CounterweightsCondition" Type="varchar" MaxLength="20" />
+          <Property Name="CounterweightsComment" Type="varchar" MaxLength="255" />
+          <Property Name="CounterweightsReplacedIndicator" Type="int" />
+          <Property Name="LeftWristpinCondition" Type="varchar" MaxLength="20" />
+          <Property Name="LeftWristpinComment" Type="varchar" MaxLength="255" />
+          <Property Name="LeftWristpinReplacedIndicator" Type="int" />
+          <Property Name="LeftWristpinSealLeakIndicator" Type="int" />
+          <Property Name="RightWristpinCondition" Type="varchar" MaxLength="20" />
+          <Property Name="RightWristpinComment" Type="varchar" MaxLength="255" />
+          <Property Name="RightWristpinReplacedIndicator" Type="int" />
+          <Property Name="RightWristpinSealLeakIndicator" Type="int" />
+          <Property Name="CenterBearingCondition" Type="varchar" MaxLength="20" />
+          <Property Name="CenterBearingComment" Type="varchar" MaxLength="255" />
+          <Property Name="CenterBearingReplacedIndicator" Type="int" />
+          <Property Name="CenterBearingSealLeakIndicator" Type="int" />
+          <Property Name="EqualizerBearingCondition" Type="varchar" MaxLength="20" />
+          <Property Name="EqualizerBearingComment" Type="varchar" MaxLength="255" />
+          <Property Name="EqualizerBearingReplacedIndicator" Type="int" />
+          <Property Name="EqualizerBearingSealLeakIndicator" Type="int" />
+          <Property Name="BeamCondition" Type="varchar" MaxLength="20" />
+          <Property Name="BeamComment" Type="varchar" MaxLength="255" />
+          <Property Name="BeamReplacedIndicator" Type="int" />
+          <Property Name="PitmanArmsCondition" Type="varchar" MaxLength="20" />
+          <Property Name="PitmanArmsComment" Type="varchar" MaxLength="255" />
+          <Property Name="PitmanArmsReplacedIndicator" Type="int" />
+          <Property Name="SampsonPostCondition" Type="varchar" MaxLength="20" />
+          <Property Name="SampsonPostComment" Type="varchar" MaxLength="255" />
+          <Property Name="SampsonPostReplacedIndicator" Type="int" />
+          <Property Name="LadderCondition" Type="varchar" MaxLength="20" />
+          <Property Name="LadderComment" Type="varchar" MaxLength="255" />
+          <Property Name="LadderReplacedIndicator" Type="int" />
+          <Property Name="HeadCondition" Type="varchar" MaxLength="20" />
+          <Property Name="HeadComment" Type="varchar" MaxLength="255" />
+          <Property Name="HeadReplacedIndicator" Type="int" />
+          <Property Name="BridleCondition" Type="varchar" MaxLength="20" />
+          <Property Name="BridleComment" Type="varchar" MaxLength="255" />
+          <Property Name="BridleReplacedIndicator" Type="int" />
+          <Property Name="GreaseLinesCondition" Type="varchar" MaxLength="20" />
+          <Property Name="GreaseLinesComment" Type="varchar" MaxLength="255" />
+          <Property Name="GreaseLinesReplacedIndicator" Type="int" />
+          <Property Name="BeltGuardCondition" Type="varchar" MaxLength="20" />
+          <Property Name="BeltGuardComment" Type="varchar" MaxLength="255" />
+          <Property Name="BeltGuardReplacedIndicator" Type="int" />
+          <Property Name="BeltsCondition" Type="varchar" MaxLength="20" />
+          <Property Name="BeltsComment" Type="varchar" MaxLength="255" />
+          <Property Name="BeltsReplacedIndicator" Type="int" />
+          <Property Name="MotorCondition" Type="varchar" MaxLength="20" />
+          <Property Name="MotorComment" Type="varchar" MaxLength="255" />
+          <Property Name="MotorReplacedIndicator" Type="int" />
+          <Property Name="BrakeCondition" Type="varchar" MaxLength="20" />
+          <Property Name="BrakeComment" Type="varchar" MaxLength="255" />
+          <Property Name="BrakeReplacedIndicator" Type="int" />
+          <Property Name="UnitGuardCondition" Type="varchar" MaxLength="20" />
+          <Property Name="UnitGuardComment" Type="varchar" MaxLength="255" />
+          <Property Name="UnitGuardReplacedIndicator" Type="int" />
+          <Property Name="StructureBoltsCondition" Type="varchar" MaxLength="20" />
+          <Property Name="StructureBoltsComment" Type="varchar" MaxLength="255" />
+          <Property Name="StructureBoltsReplacedIndicator" Type="int" />
+          <Property Name="UnitPadCondition" Type="varchar" MaxLength="20" />
+          <Property Name="UnitPadComment" Type="varchar" MaxLength="255" />
+          <Property Name="UnitPadReplacedIndicator" Type="int" />
+          <Property Name="ElectricPanelHOACondition" Type="varchar" MaxLength="20" />
+          <Property Name="ElectricPanelHOAComment" Type="varchar" MaxLength="255" />
+          <Property Name="ElectricPanelHOAReplacedIndicator" Type="int" />
+          <Property Name="HorseHeadCondition" Type="varchar" MaxLength="20" />
+          <Property Name="HorseHeadComment" Type="varchar" MaxLength="255" />
+          <Property Name="DataPlateCondition" Type="varchar" MaxLength="20" />
+          <Property Name="DataPlateComment" Type="varchar" MaxLength="255" />
+          <Property Name="WellSignCondition" Type="varchar" MaxLength="20" />
+          <Property Name="WellSignComment" Type="varchar" MaxLength="255" />
+          <Property Name="TubingRotatorCondition" Type="varchar" MaxLength="20" />
+          <Property Name="TubingRotatorComment" Type="varchar" MaxLength="255" />
+          <Property Name="RodRotatorCondition" Type="varchar" MaxLength="20" />
+          <Property Name="RodRotatorComment" Type="varchar" MaxLength="255" />
+          <Property Name="CenterBearingsCondition" Type="varchar" MaxLength="20" />
+          <Property Name="CenterBearingsComment" Type="varchar" MaxLength="255" />
+          <Property Name="TailBearingsCondition" Type="varchar" MaxLength="20" />
+          <Property Name="TailBearingsComment" Type="varchar" MaxLength="255" />
+          <Property Name="WristPinsCondition" Type="varchar" MaxLength="20" />
+          <Property Name="WristPinsComment" Type="varchar" MaxLength="255" />
+          <Property Name="GearboxOilLevelCondition" Type="varchar" MaxLength="20" />
+          <Property Name="GearboxOilLevelComment" Type="varchar" MaxLength="255" />
+          <Property Name="GearboxGalsOilAdded" Type="varchar" MaxLength="20" />
+          <Property Name="BrakeCableCondition" Type="varchar" MaxLength="20" />
+          <Property Name="BrakeCableComment" Type="varchar" MaxLength="255" />
+          <Property Name="BrakeHingesCondition" Type="varchar" MaxLength="20" />
+          <Property Name="BrakeHingesComment" Type="varchar" MaxLength="255" />
+          <Property Name="CleanAreaCondition" Type="varchar" MaxLength="20" />
+          <Property Name="CleanAreaComment" Type="varchar" MaxLength="255" />
+          <Property Name="CleanUnitCondition" Type="varchar" MaxLength="20" />
+          <Property Name="CleanUnitComment" Type="varchar" MaxLength="255" />
+          <Property Name="SAPNumOnUnitCondition" Type="varchar" MaxLength="20" />
+          <Property Name="SAPNumOnUnitComment" Type="varchar" MaxLength="255" />
+          <Property Name="SAPNumOnMotorCondition" Type="varchar" MaxLength="20" />
+          <Property Name="SAPNumOnMotorComment" Type="varchar" MaxLength="255" />
+          <Property Name="LubeStickersAppliedCondition" Type="varchar" MaxLength="20" />
+          <Property Name="LubeStickersAppliedComment" Type="varchar" MaxLength="255" />
+          <Property Name="DustCapsCondition" Type="varchar" MaxLength="20" />
+          <Property Name="DustCapsComment" Type="varchar" MaxLength="255" />
+          <Property Name="GeneralCmnts" Type="varchar(max)" />
+        </EntityType>
         <EntityContainer Name="AeraLegoModelStoreContainer">
           <EntitySet Name="HackWells" EntityType="Self.HackWells" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [HackWells].[cmpl_fac_id] AS [cmpl_fac_id], 
-    [HackWells].[cmpl_fac_nme] AS [cmpl_fac_nme], 
+    [HackWells].[well_fac_id] AS [well_fac_id], 
+    [HackWells].[well_fac_nme] AS [well_fac_nme], 
     [HackWells].[well_api_nbr] AS [well_api_nbr], 
     [HackWells].[fac_state_type_desc] AS [fac_state_type_desc], 
     [HackWells].[prim_purp_type_desc] AS [prim_purp_type_desc], 
@@ -33,6 +188,156 @@ warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary ke
     [HackWells].[PROD_MFLD_FAC_NME] AS [PROD_MFLD_FAC_NME]
     FROM [dbo].[HackWells] AS [HackWells]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_PumpingUnitInspections" EntityType="Self.v_PumpingUnitInspections" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_PumpingUnitInspections].[Asset] AS [Asset], 
+    [v_PumpingUnitInspections].[WellFacID] AS [WellFacID], 
+    [v_PumpingUnitInspections].[WellName] AS [WellName], 
+    [v_PumpingUnitInspections].[InspectionDate] AS [InspectionDate], 
+    [v_PumpingUnitInspections].[InspectorName] AS [InspectorName], 
+    [v_PumpingUnitInspections].[UnitMatchSAP] AS [UnitMatchSAP], 
+    [v_PumpingUnitInspections].[UnitSAPNo] AS [UnitSAPNo], 
+    [v_PumpingUnitInspections].[UnitMfr] AS [UnitMfr], 
+    [v_PumpingUnitInspections].[UnitSN] AS [UnitSN], 
+    [v_PumpingUnitInspections].[UnitAPI] AS [UnitAPI], 
+    [v_PumpingUnitInspections].[UnitStyle] AS [UnitStyle], 
+    [v_PumpingUnitInspections].[MotorMatchSAP] AS [MotorMatchSAP], 
+    [v_PumpingUnitInspections].[MotorSAPNo] AS [MotorSAPNo], 
+    [v_PumpingUnitInspections].[MotorMfr] AS [MotorMfr], 
+    [v_PumpingUnitInspections].[MotorSN] AS [MotorSN], 
+    [v_PumpingUnitInspections].[MotorHP] AS [MotorHP], 
+    [v_PumpingUnitInspections].[MotorFrame] AS [MotorFrame], 
+    [v_PumpingUnitInspections].[MotorRPM] AS [MotorRPM], 
+    [v_PumpingUnitInspections].[MotorSheaveSize] AS [MotorSheaveSize], 
+    [v_PumpingUnitInspections].[MotorNumberBelts] AS [MotorNumberBelts], 
+    [v_PumpingUnitInspections].[MotorBeltSize] AS [MotorBeltSize], 
+    [v_PumpingUnitInspections].[GearboxSAPNumber] AS [GearboxSAPNumber], 
+    [v_PumpingUnitInspections].[GearboxSerialNumber] AS [GearboxSerialNumber], 
+    [v_PumpingUnitInspections].[GearboxSheaveSize] AS [GearboxSheaveSize], 
+    [v_PumpingUnitInspections].[GearboxRatio] AS [GearboxRatio], 
+    [v_PumpingUnitInspections].[CBRotation] AS [CBRotation], 
+    [v_PumpingUnitInspections].[CBCranks] AS [CBCranks], 
+    [v_PumpingUnitInspections].[CBLeftMainLead] AS [CBLeftMainLead], 
+    [v_PumpingUnitInspections].[CBLeftAux1Lead] AS [CBLeftAux1Lead], 
+    [v_PumpingUnitInspections].[CBLeftAux2Lead] AS [CBLeftAux2Lead], 
+    [v_PumpingUnitInspections].[CBLeftMainLag] AS [CBLeftMainLag], 
+    [v_PumpingUnitInspections].[CBLeftAux1Lag] AS [CBLeftAux1Lag], 
+    [v_PumpingUnitInspections].[CBLeftAux2Lag] AS [CBLeftAux2Lag], 
+    [v_PumpingUnitInspections].[CBRightAux1Lead] AS [CBRightAux1Lead], 
+    [v_PumpingUnitInspections].[CBRightAux2Lead] AS [CBRightAux2Lead], 
+    [v_PumpingUnitInspections].[CBRightMainLag] AS [CBRightMainLag], 
+    [v_PumpingUnitInspections].[CBRightAux1Lag] AS [CBRightAux1Lag], 
+    [v_PumpingUnitInspections].[CBRightAux2Lag] AS [CBRightAux2Lag], 
+    [v_PumpingUnitInspections].[GearboxGearsCondition] AS [GearboxGearsCondition], 
+    [v_PumpingUnitInspections].[GearboxGearsComment] AS [GearboxGearsComment], 
+    [v_PumpingUnitInspections].[GearboxGearsReplacedIndicator] AS [GearboxGearsReplacedIndicator], 
+    [v_PumpingUnitInspections].[GearboxGearsSealLeakIndicator] AS [GearboxGearsSealLeakIndicator], 
+    [v_PumpingUnitInspections].[GearboxLeakingIndicator] AS [GearboxLeakingIndicator], 
+    [v_PumpingUnitInspections].[CranksCondition] AS [CranksCondition], 
+    [v_PumpingUnitInspections].[CranksComment] AS [CranksComment], 
+    [v_PumpingUnitInspections].[CranksReplacedIndicator] AS [CranksReplacedIndicator], 
+    [v_PumpingUnitInspections].[CounterweightsCondition] AS [CounterweightsCondition], 
+    [v_PumpingUnitInspections].[CounterweightsComment] AS [CounterweightsComment], 
+    [v_PumpingUnitInspections].[CounterweightsReplacedIndicator] AS [CounterweightsReplacedIndicator], 
+    [v_PumpingUnitInspections].[LeftWristpinCondition] AS [LeftWristpinCondition], 
+    [v_PumpingUnitInspections].[LeftWristpinComment] AS [LeftWristpinComment], 
+    [v_PumpingUnitInspections].[LeftWristpinReplacedIndicator] AS [LeftWristpinReplacedIndicator], 
+    [v_PumpingUnitInspections].[LeftWristpinSealLeakIndicator] AS [LeftWristpinSealLeakIndicator], 
+    [v_PumpingUnitInspections].[RightWristpinCondition] AS [RightWristpinCondition], 
+    [v_PumpingUnitInspections].[RightWristpinComment] AS [RightWristpinComment], 
+    [v_PumpingUnitInspections].[RightWristpinReplacedIndicator] AS [RightWristpinReplacedIndicator], 
+    [v_PumpingUnitInspections].[RightWristpinSealLeakIndicator] AS [RightWristpinSealLeakIndicator], 
+    [v_PumpingUnitInspections].[CenterBearingCondition] AS [CenterBearingCondition], 
+    [v_PumpingUnitInspections].[CenterBearingComment] AS [CenterBearingComment], 
+    [v_PumpingUnitInspections].[CenterBearingReplacedIndicator] AS [CenterBearingReplacedIndicator], 
+    [v_PumpingUnitInspections].[CenterBearingSealLeakIndicator] AS [CenterBearingSealLeakIndicator], 
+    [v_PumpingUnitInspections].[EqualizerBearingCondition] AS [EqualizerBearingCondition], 
+    [v_PumpingUnitInspections].[EqualizerBearingComment] AS [EqualizerBearingComment], 
+    [v_PumpingUnitInspections].[EqualizerBearingReplacedIndicator] AS [EqualizerBearingReplacedIndicator], 
+    [v_PumpingUnitInspections].[EqualizerBearingSealLeakIndicator] AS [EqualizerBearingSealLeakIndicator], 
+    [v_PumpingUnitInspections].[BeamCondition] AS [BeamCondition], 
+    [v_PumpingUnitInspections].[BeamComment] AS [BeamComment], 
+    [v_PumpingUnitInspections].[BeamReplacedIndicator] AS [BeamReplacedIndicator], 
+    [v_PumpingUnitInspections].[PitmanArmsCondition] AS [PitmanArmsCondition], 
+    [v_PumpingUnitInspections].[PitmanArmsComment] AS [PitmanArmsComment], 
+    [v_PumpingUnitInspections].[PitmanArmsReplacedIndicator] AS [PitmanArmsReplacedIndicator], 
+    [v_PumpingUnitInspections].[SampsonPostCondition] AS [SampsonPostCondition], 
+    [v_PumpingUnitInspections].[SampsonPostComment] AS [SampsonPostComment], 
+    [v_PumpingUnitInspections].[SampsonPostReplacedIndicator] AS [SampsonPostReplacedIndicator], 
+    [v_PumpingUnitInspections].[LadderCondition] AS [LadderCondition], 
+    [v_PumpingUnitInspections].[LadderComment] AS [LadderComment], 
+    [v_PumpingUnitInspections].[LadderReplacedIndicator] AS [LadderReplacedIndicator], 
+    [v_PumpingUnitInspections].[HeadCondition] AS [HeadCondition], 
+    [v_PumpingUnitInspections].[HeadComment] AS [HeadComment], 
+    [v_PumpingUnitInspections].[HeadReplacedIndicator] AS [HeadReplacedIndicator], 
+    [v_PumpingUnitInspections].[BridleCondition] AS [BridleCondition], 
+    [v_PumpingUnitInspections].[BridleComment] AS [BridleComment], 
+    [v_PumpingUnitInspections].[BridleReplacedIndicator] AS [BridleReplacedIndicator], 
+    [v_PumpingUnitInspections].[GreaseLinesCondition] AS [GreaseLinesCondition], 
+    [v_PumpingUnitInspections].[GreaseLinesComment] AS [GreaseLinesComment], 
+    [v_PumpingUnitInspections].[GreaseLinesReplacedIndicator] AS [GreaseLinesReplacedIndicator], 
+    [v_PumpingUnitInspections].[BeltGuardCondition] AS [BeltGuardCondition], 
+    [v_PumpingUnitInspections].[BeltGuardComment] AS [BeltGuardComment], 
+    [v_PumpingUnitInspections].[BeltGuardReplacedIndicator] AS [BeltGuardReplacedIndicator], 
+    [v_PumpingUnitInspections].[BeltsCondition] AS [BeltsCondition], 
+    [v_PumpingUnitInspections].[BeltsComment] AS [BeltsComment], 
+    [v_PumpingUnitInspections].[BeltsReplacedIndicator] AS [BeltsReplacedIndicator], 
+    [v_PumpingUnitInspections].[MotorCondition] AS [MotorCondition], 
+    [v_PumpingUnitInspections].[MotorComment] AS [MotorComment], 
+    [v_PumpingUnitInspections].[MotorReplacedIndicator] AS [MotorReplacedIndicator], 
+    [v_PumpingUnitInspections].[BrakeCondition] AS [BrakeCondition], 
+    [v_PumpingUnitInspections].[BrakeComment] AS [BrakeComment], 
+    [v_PumpingUnitInspections].[BrakeReplacedIndicator] AS [BrakeReplacedIndicator], 
+    [v_PumpingUnitInspections].[UnitGuardCondition] AS [UnitGuardCondition], 
+    [v_PumpingUnitInspections].[UnitGuardComment] AS [UnitGuardComment], 
+    [v_PumpingUnitInspections].[UnitGuardReplacedIndicator] AS [UnitGuardReplacedIndicator], 
+    [v_PumpingUnitInspections].[StructureBoltsCondition] AS [StructureBoltsCondition], 
+    [v_PumpingUnitInspections].[StructureBoltsComment] AS [StructureBoltsComment], 
+    [v_PumpingUnitInspections].[StructureBoltsReplacedIndicator] AS [StructureBoltsReplacedIndicator], 
+    [v_PumpingUnitInspections].[UnitPadCondition] AS [UnitPadCondition], 
+    [v_PumpingUnitInspections].[UnitPadComment] AS [UnitPadComment], 
+    [v_PumpingUnitInspections].[UnitPadReplacedIndicator] AS [UnitPadReplacedIndicator], 
+    [v_PumpingUnitInspections].[ElectricPanelHOACondition] AS [ElectricPanelHOACondition], 
+    [v_PumpingUnitInspections].[ElectricPanelHOAComment] AS [ElectricPanelHOAComment], 
+    [v_PumpingUnitInspections].[ElectricPanelHOAReplacedIndicator] AS [ElectricPanelHOAReplacedIndicator], 
+    [v_PumpingUnitInspections].[HorseHeadCondition] AS [HorseHeadCondition], 
+    [v_PumpingUnitInspections].[HorseHeadComment] AS [HorseHeadComment], 
+    [v_PumpingUnitInspections].[DataPlateCondition] AS [DataPlateCondition], 
+    [v_PumpingUnitInspections].[DataPlateComment] AS [DataPlateComment], 
+    [v_PumpingUnitInspections].[WellSignCondition] AS [WellSignCondition], 
+    [v_PumpingUnitInspections].[WellSignComment] AS [WellSignComment], 
+    [v_PumpingUnitInspections].[TubingRotatorCondition] AS [TubingRotatorCondition], 
+    [v_PumpingUnitInspections].[TubingRotatorComment] AS [TubingRotatorComment], 
+    [v_PumpingUnitInspections].[RodRotatorCondition] AS [RodRotatorCondition], 
+    [v_PumpingUnitInspections].[RodRotatorComment] AS [RodRotatorComment], 
+    [v_PumpingUnitInspections].[CenterBearingsCondition] AS [CenterBearingsCondition], 
+    [v_PumpingUnitInspections].[CenterBearingsComment] AS [CenterBearingsComment], 
+    [v_PumpingUnitInspections].[TailBearingsCondition] AS [TailBearingsCondition], 
+    [v_PumpingUnitInspections].[TailBearingsComment] AS [TailBearingsComment], 
+    [v_PumpingUnitInspections].[WristPinsCondition] AS [WristPinsCondition], 
+    [v_PumpingUnitInspections].[WristPinsComment] AS [WristPinsComment], 
+    [v_PumpingUnitInspections].[GearboxOilLevelCondition] AS [GearboxOilLevelCondition], 
+    [v_PumpingUnitInspections].[GearboxOilLevelComment] AS [GearboxOilLevelComment], 
+    [v_PumpingUnitInspections].[GearboxGalsOilAdded] AS [GearboxGalsOilAdded], 
+    [v_PumpingUnitInspections].[BrakeCableCondition] AS [BrakeCableCondition], 
+    [v_PumpingUnitInspections].[BrakeCableComment] AS [BrakeCableComment], 
+    [v_PumpingUnitInspections].[BrakeHingesCondition] AS [BrakeHingesCondition], 
+    [v_PumpingUnitInspections].[BrakeHingesComment] AS [BrakeHingesComment], 
+    [v_PumpingUnitInspections].[CleanAreaCondition] AS [CleanAreaCondition], 
+    [v_PumpingUnitInspections].[CleanAreaComment] AS [CleanAreaComment], 
+    [v_PumpingUnitInspections].[CleanUnitCondition] AS [CleanUnitCondition], 
+    [v_PumpingUnitInspections].[CleanUnitComment] AS [CleanUnitComment], 
+    [v_PumpingUnitInspections].[SAPNumOnUnitCondition] AS [SAPNumOnUnitCondition], 
+    [v_PumpingUnitInspections].[SAPNumOnUnitComment] AS [SAPNumOnUnitComment], 
+    [v_PumpingUnitInspections].[SAPNumOnMotorCondition] AS [SAPNumOnMotorCondition], 
+    [v_PumpingUnitInspections].[SAPNumOnMotorComment] AS [SAPNumOnMotorComment], 
+    [v_PumpingUnitInspections].[LubeStickersAppliedCondition] AS [LubeStickersAppliedCondition], 
+    [v_PumpingUnitInspections].[LubeStickersAppliedComment] AS [LubeStickersAppliedComment], 
+    [v_PumpingUnitInspections].[DustCapsCondition] AS [DustCapsCondition], 
+    [v_PumpingUnitInspections].[DustCapsComment] AS [DustCapsComment], 
+    [v_PumpingUnitInspections].[GeneralCmnts] AS [GeneralCmnts]
+    FROM [dbo].[v_PumpingUnitInspections] AS [v_PumpingUnitInspections]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -40,10 +345,10 @@ warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary ke
       <Schema Namespace="AeraLegoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="HackWell">
           <Key>
-            <PropertyRef Name="cmpl_fac_id" />
+            <PropertyRef Name="well_fac_id" />
           </Key>
-          <Property Name="cmpl_fac_id" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="cmpl_fac_nme" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="well_fac_id" Type="Int32" Nullable="false" />
+          <Property Name="well_fac_nme" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="well_api_nbr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="fac_state_type_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="prim_purp_type_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -53,7 +358,160 @@ warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary ke
         </EntityType>
         <EntityContainer Name="AeraLegoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="HackWells" EntityType="Self.HackWell" />
+          <EntitySet Name="v_PumpingUnitInspections" EntityType="AeraLegoModel.v_PumpingUnitInspections" />
         </EntityContainer>
+        <EntityType Name="v_PumpingUnitInspections">
+          <Key>
+            <PropertyRef Name="WellFacID" />
+            <PropertyRef Name="InspectionDate" />
+          </Key>
+          <Property Name="Asset" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="WellFacID" Type="Int32" Nullable="false" />
+          <Property Name="WellName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="InspectionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="InspectorName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UnitMatchSAP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UnitSAPNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitMfr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitSN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitAPI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitStyle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MotorMatchSAP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MotorSAPNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotorMfr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotorSN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotorHP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MotorFrame" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MotorRPM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MotorSheaveSize" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MotorNumberBelts" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MotorBeltSize" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxSAPNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxSerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxSheaveSize" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxRatio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CBRotation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CBCranks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CBLeftMainLead" Type="String" MaxLength="42" FixedLength="false" Unicode="false" />
+          <Property Name="CBLeftAux1Lead" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CBLeftAux2Lead" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CBLeftMainLag" Type="String" MaxLength="42" FixedLength="false" Unicode="false" />
+          <Property Name="CBLeftAux1Lag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CBLeftAux2Lag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CBRightAux1Lead" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CBRightAux2Lead" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CBRightMainLag" Type="String" MaxLength="42" FixedLength="false" Unicode="false" />
+          <Property Name="CBRightAux1Lag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CBRightAux2Lag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxGearsCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxGearsComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxGearsReplacedIndicator" Type="Int32" />
+          <Property Name="GearboxGearsSealLeakIndicator" Type="Int32" />
+          <Property Name="GearboxLeakingIndicator" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CranksCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CranksComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CranksReplacedIndicator" Type="Int32" />
+          <Property Name="CounterweightsCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CounterweightsComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CounterweightsReplacedIndicator" Type="Int32" />
+          <Property Name="LeftWristpinCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LeftWristpinComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LeftWristpinReplacedIndicator" Type="Int32" />
+          <Property Name="LeftWristpinSealLeakIndicator" Type="Int32" />
+          <Property Name="RightWristpinCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RightWristpinComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RightWristpinReplacedIndicator" Type="Int32" />
+          <Property Name="RightWristpinSealLeakIndicator" Type="Int32" />
+          <Property Name="CenterBearingCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CenterBearingComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CenterBearingReplacedIndicator" Type="Int32" />
+          <Property Name="CenterBearingSealLeakIndicator" Type="Int32" />
+          <Property Name="EqualizerBearingCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EqualizerBearingComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EqualizerBearingReplacedIndicator" Type="Int32" />
+          <Property Name="EqualizerBearingSealLeakIndicator" Type="Int32" />
+          <Property Name="BeamCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BeamComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BeamReplacedIndicator" Type="Int32" />
+          <Property Name="PitmanArmsCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PitmanArmsComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PitmanArmsReplacedIndicator" Type="Int32" />
+          <Property Name="SampsonPostCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SampsonPostComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SampsonPostReplacedIndicator" Type="Int32" />
+          <Property Name="LadderCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LadderComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LadderReplacedIndicator" Type="Int32" />
+          <Property Name="HeadCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HeadComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HeadReplacedIndicator" Type="Int32" />
+          <Property Name="BridleCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BridleComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BridleReplacedIndicator" Type="Int32" />
+          <Property Name="GreaseLinesCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GreaseLinesComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GreaseLinesReplacedIndicator" Type="Int32" />
+          <Property Name="BeltGuardCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BeltGuardComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BeltGuardReplacedIndicator" Type="Int32" />
+          <Property Name="BeltsCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BeltsComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BeltsReplacedIndicator" Type="Int32" />
+          <Property Name="MotorCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MotorComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MotorReplacedIndicator" Type="Int32" />
+          <Property Name="BrakeCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BrakeComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BrakeReplacedIndicator" Type="Int32" />
+          <Property Name="UnitGuardCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UnitGuardComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UnitGuardReplacedIndicator" Type="Int32" />
+          <Property Name="StructureBoltsCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StructureBoltsComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StructureBoltsReplacedIndicator" Type="Int32" />
+          <Property Name="UnitPadCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPadComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPadReplacedIndicator" Type="Int32" />
+          <Property Name="ElectricPanelHOACondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ElectricPanelHOAComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ElectricPanelHOAReplacedIndicator" Type="Int32" />
+          <Property Name="HorseHeadCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HorseHeadComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DataPlateCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DataPlateComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WellSignCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WellSignComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TubingRotatorCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TubingRotatorComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RodRotatorCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RodRotatorComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CenterBearingsCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CenterBearingsComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TailBearingsCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TailBearingsComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WristPinsCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WristPinsComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxOilLevelCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxOilLevelComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GearboxGalsOilAdded" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BrakeCableCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BrakeCableComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BrakeHingesCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BrakeHingesComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CleanAreaCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CleanAreaComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CleanUnitCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CleanUnitComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SAPNumOnUnitCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SAPNumOnUnitComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SAPNumOnMotorCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SAPNumOnMotorComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LubeStickersAppliedCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LubeStickersAppliedComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DustCapsCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DustCapsComment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GeneralCmnts" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -63,14 +521,166 @@ warning 6002: The table/view 'AeraLego.dbo.HackWells' does not have a primary ke
           <EntitySetMapping Name="HackWells">
             <EntityTypeMapping TypeName="AeraLegoModel.HackWell">
               <MappingFragment StoreEntitySet="HackWells">
+                <ScalarProperty Name="well_fac_nme" ColumnName="well_fac_nme" />
+                <ScalarProperty Name="well_fac_id" ColumnName="well_fac_id" />
                 <ScalarProperty Name="PROD_MFLD_FAC_NME" ColumnName="PROD_MFLD_FAC_NME" />
                 <ScalarProperty Name="svc_stat_indc" ColumnName="svc_stat_indc" />
                 <ScalarProperty Name="prim_prdt_matl_type_desc" ColumnName="prim_prdt_matl_type_desc" />
                 <ScalarProperty Name="prim_purp_type_desc" ColumnName="prim_purp_type_desc" />
                 <ScalarProperty Name="fac_state_type_desc" ColumnName="fac_state_type_desc" />
                 <ScalarProperty Name="well_api_nbr" ColumnName="well_api_nbr" />
-                <ScalarProperty Name="cmpl_fac_id" ColumnName="cmpl_fac_id" />
-                <ScalarProperty Name="cmpl_fac_nme" ColumnName="cmpl_fac_nme" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_PumpingUnitInspections">
+            <EntityTypeMapping TypeName="AeraLegoModel.v_PumpingUnitInspections">
+              <MappingFragment StoreEntitySet="v_PumpingUnitInspections">
+                <ScalarProperty Name="GeneralCmnts" ColumnName="GeneralCmnts" />
+                <ScalarProperty Name="DustCapsComment" ColumnName="DustCapsComment" />
+                <ScalarProperty Name="DustCapsCondition" ColumnName="DustCapsCondition" />
+                <ScalarProperty Name="LubeStickersAppliedComment" ColumnName="LubeStickersAppliedComment" />
+                <ScalarProperty Name="LubeStickersAppliedCondition" ColumnName="LubeStickersAppliedCondition" />
+                <ScalarProperty Name="SAPNumOnMotorComment" ColumnName="SAPNumOnMotorComment" />
+                <ScalarProperty Name="SAPNumOnMotorCondition" ColumnName="SAPNumOnMotorCondition" />
+                <ScalarProperty Name="SAPNumOnUnitComment" ColumnName="SAPNumOnUnitComment" />
+                <ScalarProperty Name="SAPNumOnUnitCondition" ColumnName="SAPNumOnUnitCondition" />
+                <ScalarProperty Name="CleanUnitComment" ColumnName="CleanUnitComment" />
+                <ScalarProperty Name="CleanUnitCondition" ColumnName="CleanUnitCondition" />
+                <ScalarProperty Name="CleanAreaComment" ColumnName="CleanAreaComment" />
+                <ScalarProperty Name="CleanAreaCondition" ColumnName="CleanAreaCondition" />
+                <ScalarProperty Name="BrakeHingesComment" ColumnName="BrakeHingesComment" />
+                <ScalarProperty Name="BrakeHingesCondition" ColumnName="BrakeHingesCondition" />
+                <ScalarProperty Name="BrakeCableComment" ColumnName="BrakeCableComment" />
+                <ScalarProperty Name="BrakeCableCondition" ColumnName="BrakeCableCondition" />
+                <ScalarProperty Name="GearboxGalsOilAdded" ColumnName="GearboxGalsOilAdded" />
+                <ScalarProperty Name="GearboxOilLevelComment" ColumnName="GearboxOilLevelComment" />
+                <ScalarProperty Name="GearboxOilLevelCondition" ColumnName="GearboxOilLevelCondition" />
+                <ScalarProperty Name="WristPinsComment" ColumnName="WristPinsComment" />
+                <ScalarProperty Name="WristPinsCondition" ColumnName="WristPinsCondition" />
+                <ScalarProperty Name="TailBearingsComment" ColumnName="TailBearingsComment" />
+                <ScalarProperty Name="TailBearingsCondition" ColumnName="TailBearingsCondition" />
+                <ScalarProperty Name="CenterBearingsComment" ColumnName="CenterBearingsComment" />
+                <ScalarProperty Name="CenterBearingsCondition" ColumnName="CenterBearingsCondition" />
+                <ScalarProperty Name="RodRotatorComment" ColumnName="RodRotatorComment" />
+                <ScalarProperty Name="RodRotatorCondition" ColumnName="RodRotatorCondition" />
+                <ScalarProperty Name="TubingRotatorComment" ColumnName="TubingRotatorComment" />
+                <ScalarProperty Name="TubingRotatorCondition" ColumnName="TubingRotatorCondition" />
+                <ScalarProperty Name="WellSignComment" ColumnName="WellSignComment" />
+                <ScalarProperty Name="WellSignCondition" ColumnName="WellSignCondition" />
+                <ScalarProperty Name="DataPlateComment" ColumnName="DataPlateComment" />
+                <ScalarProperty Name="DataPlateCondition" ColumnName="DataPlateCondition" />
+                <ScalarProperty Name="HorseHeadComment" ColumnName="HorseHeadComment" />
+                <ScalarProperty Name="HorseHeadCondition" ColumnName="HorseHeadCondition" />
+                <ScalarProperty Name="ElectricPanelHOAReplacedIndicator" ColumnName="ElectricPanelHOAReplacedIndicator" />
+                <ScalarProperty Name="ElectricPanelHOAComment" ColumnName="ElectricPanelHOAComment" />
+                <ScalarProperty Name="ElectricPanelHOACondition" ColumnName="ElectricPanelHOACondition" />
+                <ScalarProperty Name="UnitPadReplacedIndicator" ColumnName="UnitPadReplacedIndicator" />
+                <ScalarProperty Name="UnitPadComment" ColumnName="UnitPadComment" />
+                <ScalarProperty Name="UnitPadCondition" ColumnName="UnitPadCondition" />
+                <ScalarProperty Name="StructureBoltsReplacedIndicator" ColumnName="StructureBoltsReplacedIndicator" />
+                <ScalarProperty Name="StructureBoltsComment" ColumnName="StructureBoltsComment" />
+                <ScalarProperty Name="StructureBoltsCondition" ColumnName="StructureBoltsCondition" />
+                <ScalarProperty Name="UnitGuardReplacedIndicator" ColumnName="UnitGuardReplacedIndicator" />
+                <ScalarProperty Name="UnitGuardComment" ColumnName="UnitGuardComment" />
+                <ScalarProperty Name="UnitGuardCondition" ColumnName="UnitGuardCondition" />
+                <ScalarProperty Name="BrakeReplacedIndicator" ColumnName="BrakeReplacedIndicator" />
+                <ScalarProperty Name="BrakeComment" ColumnName="BrakeComment" />
+                <ScalarProperty Name="BrakeCondition" ColumnName="BrakeCondition" />
+                <ScalarProperty Name="MotorReplacedIndicator" ColumnName="MotorReplacedIndicator" />
+                <ScalarProperty Name="MotorComment" ColumnName="MotorComment" />
+                <ScalarProperty Name="MotorCondition" ColumnName="MotorCondition" />
+                <ScalarProperty Name="BeltsReplacedIndicator" ColumnName="BeltsReplacedIndicator" />
+                <ScalarProperty Name="BeltsComment" ColumnName="BeltsComment" />
+                <ScalarProperty Name="BeltsCondition" ColumnName="BeltsCondition" />
+                <ScalarProperty Name="BeltGuardReplacedIndicator" ColumnName="BeltGuardReplacedIndicator" />
+                <ScalarProperty Name="BeltGuardComment" ColumnName="BeltGuardComment" />
+                <ScalarProperty Name="BeltGuardCondition" ColumnName="BeltGuardCondition" />
+                <ScalarProperty Name="GreaseLinesReplacedIndicator" ColumnName="GreaseLinesReplacedIndicator" />
+                <ScalarProperty Name="GreaseLinesComment" ColumnName="GreaseLinesComment" />
+                <ScalarProperty Name="GreaseLinesCondition" ColumnName="GreaseLinesCondition" />
+                <ScalarProperty Name="BridleReplacedIndicator" ColumnName="BridleReplacedIndicator" />
+                <ScalarProperty Name="BridleComment" ColumnName="BridleComment" />
+                <ScalarProperty Name="BridleCondition" ColumnName="BridleCondition" />
+                <ScalarProperty Name="HeadReplacedIndicator" ColumnName="HeadReplacedIndicator" />
+                <ScalarProperty Name="HeadComment" ColumnName="HeadComment" />
+                <ScalarProperty Name="HeadCondition" ColumnName="HeadCondition" />
+                <ScalarProperty Name="LadderReplacedIndicator" ColumnName="LadderReplacedIndicator" />
+                <ScalarProperty Name="LadderComment" ColumnName="LadderComment" />
+                <ScalarProperty Name="LadderCondition" ColumnName="LadderCondition" />
+                <ScalarProperty Name="SampsonPostReplacedIndicator" ColumnName="SampsonPostReplacedIndicator" />
+                <ScalarProperty Name="SampsonPostComment" ColumnName="SampsonPostComment" />
+                <ScalarProperty Name="SampsonPostCondition" ColumnName="SampsonPostCondition" />
+                <ScalarProperty Name="PitmanArmsReplacedIndicator" ColumnName="PitmanArmsReplacedIndicator" />
+                <ScalarProperty Name="PitmanArmsComment" ColumnName="PitmanArmsComment" />
+                <ScalarProperty Name="PitmanArmsCondition" ColumnName="PitmanArmsCondition" />
+                <ScalarProperty Name="BeamReplacedIndicator" ColumnName="BeamReplacedIndicator" />
+                <ScalarProperty Name="BeamComment" ColumnName="BeamComment" />
+                <ScalarProperty Name="BeamCondition" ColumnName="BeamCondition" />
+                <ScalarProperty Name="EqualizerBearingSealLeakIndicator" ColumnName="EqualizerBearingSealLeakIndicator" />
+                <ScalarProperty Name="EqualizerBearingReplacedIndicator" ColumnName="EqualizerBearingReplacedIndicator" />
+                <ScalarProperty Name="EqualizerBearingComment" ColumnName="EqualizerBearingComment" />
+                <ScalarProperty Name="EqualizerBearingCondition" ColumnName="EqualizerBearingCondition" />
+                <ScalarProperty Name="CenterBearingSealLeakIndicator" ColumnName="CenterBearingSealLeakIndicator" />
+                <ScalarProperty Name="CenterBearingReplacedIndicator" ColumnName="CenterBearingReplacedIndicator" />
+                <ScalarProperty Name="CenterBearingComment" ColumnName="CenterBearingComment" />
+                <ScalarProperty Name="CenterBearingCondition" ColumnName="CenterBearingCondition" />
+                <ScalarProperty Name="RightWristpinSealLeakIndicator" ColumnName="RightWristpinSealLeakIndicator" />
+                <ScalarProperty Name="RightWristpinReplacedIndicator" ColumnName="RightWristpinReplacedIndicator" />
+                <ScalarProperty Name="RightWristpinComment" ColumnName="RightWristpinComment" />
+                <ScalarProperty Name="RightWristpinCondition" ColumnName="RightWristpinCondition" />
+                <ScalarProperty Name="LeftWristpinSealLeakIndicator" ColumnName="LeftWristpinSealLeakIndicator" />
+                <ScalarProperty Name="LeftWristpinReplacedIndicator" ColumnName="LeftWristpinReplacedIndicator" />
+                <ScalarProperty Name="LeftWristpinComment" ColumnName="LeftWristpinComment" />
+                <ScalarProperty Name="LeftWristpinCondition" ColumnName="LeftWristpinCondition" />
+                <ScalarProperty Name="CounterweightsReplacedIndicator" ColumnName="CounterweightsReplacedIndicator" />
+                <ScalarProperty Name="CounterweightsComment" ColumnName="CounterweightsComment" />
+                <ScalarProperty Name="CounterweightsCondition" ColumnName="CounterweightsCondition" />
+                <ScalarProperty Name="CranksReplacedIndicator" ColumnName="CranksReplacedIndicator" />
+                <ScalarProperty Name="CranksComment" ColumnName="CranksComment" />
+                <ScalarProperty Name="CranksCondition" ColumnName="CranksCondition" />
+                <ScalarProperty Name="GearboxLeakingIndicator" ColumnName="GearboxLeakingIndicator" />
+                <ScalarProperty Name="GearboxGearsSealLeakIndicator" ColumnName="GearboxGearsSealLeakIndicator" />
+                <ScalarProperty Name="GearboxGearsReplacedIndicator" ColumnName="GearboxGearsReplacedIndicator" />
+                <ScalarProperty Name="GearboxGearsComment" ColumnName="GearboxGearsComment" />
+                <ScalarProperty Name="GearboxGearsCondition" ColumnName="GearboxGearsCondition" />
+                <ScalarProperty Name="CBRightAux2Lag" ColumnName="CBRightAux2Lag" />
+                <ScalarProperty Name="CBRightAux1Lag" ColumnName="CBRightAux1Lag" />
+                <ScalarProperty Name="CBRightMainLag" ColumnName="CBRightMainLag" />
+                <ScalarProperty Name="CBRightAux2Lead" ColumnName="CBRightAux2Lead" />
+                <ScalarProperty Name="CBRightAux1Lead" ColumnName="CBRightAux1Lead" />
+                <ScalarProperty Name="CBLeftAux2Lag" ColumnName="CBLeftAux2Lag" />
+                <ScalarProperty Name="CBLeftAux1Lag" ColumnName="CBLeftAux1Lag" />
+                <ScalarProperty Name="CBLeftMainLag" ColumnName="CBLeftMainLag" />
+                <ScalarProperty Name="CBLeftAux2Lead" ColumnName="CBLeftAux2Lead" />
+                <ScalarProperty Name="CBLeftAux1Lead" ColumnName="CBLeftAux1Lead" />
+                <ScalarProperty Name="CBLeftMainLead" ColumnName="CBLeftMainLead" />
+                <ScalarProperty Name="CBCranks" ColumnName="CBCranks" />
+                <ScalarProperty Name="CBRotation" ColumnName="CBRotation" />
+                <ScalarProperty Name="GearboxRatio" ColumnName="GearboxRatio" />
+                <ScalarProperty Name="GearboxSheaveSize" ColumnName="GearboxSheaveSize" />
+                <ScalarProperty Name="GearboxSerialNumber" ColumnName="GearboxSerialNumber" />
+                <ScalarProperty Name="GearboxSAPNumber" ColumnName="GearboxSAPNumber" />
+                <ScalarProperty Name="MotorBeltSize" ColumnName="MotorBeltSize" />
+                <ScalarProperty Name="MotorNumberBelts" ColumnName="MotorNumberBelts" />
+                <ScalarProperty Name="MotorSheaveSize" ColumnName="MotorSheaveSize" />
+                <ScalarProperty Name="MotorRPM" ColumnName="MotorRPM" />
+                <ScalarProperty Name="MotorFrame" ColumnName="MotorFrame" />
+                <ScalarProperty Name="MotorHP" ColumnName="MotorHP" />
+                <ScalarProperty Name="MotorSN" ColumnName="MotorSN" />
+                <ScalarProperty Name="MotorMfr" ColumnName="MotorMfr" />
+                <ScalarProperty Name="MotorSAPNo" ColumnName="MotorSAPNo" />
+                <ScalarProperty Name="MotorMatchSAP" ColumnName="MotorMatchSAP" />
+                <ScalarProperty Name="UnitStyle" ColumnName="UnitStyle" />
+                <ScalarProperty Name="UnitAPI" ColumnName="UnitAPI" />
+                <ScalarProperty Name="UnitSN" ColumnName="UnitSN" />
+                <ScalarProperty Name="UnitMfr" ColumnName="UnitMfr" />
+                <ScalarProperty Name="UnitSAPNo" ColumnName="UnitSAPNo" />
+                <ScalarProperty Name="UnitMatchSAP" ColumnName="UnitMatchSAP" />
+                <ScalarProperty Name="InspectorName" ColumnName="InspectorName" />
+                <ScalarProperty Name="InspectionDate" ColumnName="InspectionDate" />
+                <ScalarProperty Name="WellName" ColumnName="WellName" />
+                <ScalarProperty Name="WellFacID" ColumnName="WellFacID" />
+                <ScalarProperty Name="Asset" ColumnName="Asset" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

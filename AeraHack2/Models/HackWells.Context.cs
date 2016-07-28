@@ -26,5 +26,6 @@ namespace AeraHack2.Models
         }
     
         public virtual DbSet<HackWell> HackWells { get; set; }
+        public virtual DbSet<v_PumpingUnitInspections> v_PumpingUnitInspections { get; set; }
     }
 }
